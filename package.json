@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^10.0.6",
+    "@google-cloud/automl": "^1.10.1",
     "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
     "dotenv": "^8.2.0",
@@ -23,6 +24,7 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
     "react-native-easy-grid": "^0.2.2",
     "react-native-web": "~0.11.7",
+    "react-navigation": "^4.2.2",
     "react-webcam": "^5.0.0"
   },
   "devDependencies": {
