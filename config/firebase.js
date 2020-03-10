@@ -1,4 +1,7 @@
 import * as firebase from 'firebase';
+// import firebase from 'firebase/app';
+// import 'firebase/auth';
+
 import * as c from "./constants"
 
 // Initialize Firebase
@@ -12,6 +15,15 @@ const config = {
 };
 
 firebase.initializeApp(config);
+
+// class Firebase {
+//   constructor() {
+//     firebase.initializeApp(config);
+//     this.auth = firebase.auth();
+//   }
+// }
+
+// export default Firebase;
 
 export const database = firebase.database();
 export const auth = firebase.auth();
