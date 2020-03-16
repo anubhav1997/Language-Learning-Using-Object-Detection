@@ -105,7 +105,7 @@ export default class CameraPage extends React.Component {
         url += "&target=" + "de";
         //Replace with your API key
         
-        url += "&key=AIzaSyB6YoT679YdcMPII-M1hDq0oM6RGLYOQzI";
+        url += "&key=API_KEY";
         let googleTranslate = await fetch(url);
 
         await googleTranslate.json()
@@ -151,10 +151,8 @@ export default class CameraPage extends React.Component {
 
         await googleVisionRes.json()
             .then(googleVisionRes => {
-                // console.log(googleVisionRes)
                 console.log(googleVisionRes.responses[0].localizedObjectAnnotations[0].name)
-                // this.translate(googleVisionRes.responses[0].localizedObjectAnnotations[0].name);
-                this.translate(googleVisionRes.responses[0].localizedObjectAnnotations[0].name, "de", "AIzaSyB6YoT679YdcMPII-M1hDq0oM6RGLYOQzI")
+                this.translate(googleVisionRes.responses[0].localizedObjectAnnotations[0].name, "de", "API_KEY")
                 if (googleVisionRes) {
                     this.setState(
                         {
@@ -197,12 +195,8 @@ export default class CameraPage extends React.Component {
     }
     handleShortCapture = async () => {
         const options = { quality: 0.5, base64: true};
-            
         const photoData = await this.camera.takePictureAsync(options);
-        // console.log(photoData);
 
-        // photoData = RNFS.readFile(photoData);
-        // console.log(photoData.uri);
         this.setState({
                 cameraResult: true,
                 result: photoData.base64,
@@ -215,7 +209,6 @@ export default class CameraPage extends React.Component {
                         }
                         
                     }))
-        // this.handlePress(photoData.base64);
         this.setState({ capturing: false, captures: [photoData, ...this.state.captures] });
     };
 
