@@ -8,15 +8,6 @@ import Toolbar from './toolbar.component';
 import Gallery from './gallery.component';
 import config from './config';
 import config2 from './config2';
-// var RNFS = require('react-native-fs');
-// import * as RNFS from 'react-native-fs';
-
-// import {database, auth, provider, storage} from "./config/firebase";
-
-
-// import firebase from 'firebase'
-// import RNFetchBlob from 'react-native-fetch-blob'
-
 
 export default class CameraPage extends React.Component {
     camera = null;
@@ -49,52 +40,8 @@ export default class CameraPage extends React.Component {
             this.camera.stopRecording();
     };
 
-    // getTranslation(term, target, key){
-    //   fetch("https://translation.googleapis.com/language/translate/v2", {
-    //         method: "POST",
-    //         headers: {
-    //           "Content-Type": "application/json; charset=utf-8",
-    //           Authorization: `Bearer ${key}`
-    //         },
-    //         redirect: "follow",
-    //         referrer: "no-referrer",
-    //         body: JSON.stringify({
-    //           q: term,
-    //           target: target
-    //         })
-    //       }).then(googleTranslateRes => {
-    //             // console.log(googleVisionRes)
-    //             console.log(googleTranslateRes)
-
-    //             if (googleTranslateRes) {
-    //                 this.setState(
-    //                     {
-    //                         loading: false,
-    //                         // googleVisionDetetion: googleVisionRes.responses[0].localizedObjectAnnotations[0].name,
-    //                     }
-    //                 )
-    //                return googleTranslateRes;
-    //             }
-    //         }).catch((error) => { console.log(error) })
-              
-    // };
 
     translate = async (term, target, key) => {
-
-        // console.log("hereee", string1);
-
-        // let googleTranslate2 = await fetch(config.googleCloud.api + config.googleCloud.apiKey, {
-        //     method: "POST",
-        //     headers: {
-        //       "Content-Type": "application/json; charset=utf-8",
-        //     },
-        //     redirect: "follow",
-        //     referrer: "no-referrer",
-        //     body: JSON.stringify({
-        //       q: term,
-        //       target: target
-        //     })
-        //   });
         var url = "https://translation.googleapis.com/language/translate/v2";
         //Strings requiring translation
         url += "?q=" + term;
@@ -169,10 +116,6 @@ export default class CameraPage extends React.Component {
                             
                         }
                     )
-                    // this.drawBox(googleVisionRes.responses[0].localizedObjectAnnotations[0], googleVisionRes.responses[0].localizedObjectAnnotations[0].name)
-                    // var elements = document.getElementsByClassName('Output');
-                    // var elements = this.myRef.current;
-                    // elements.innerHTML = googleVisionRes.responses[0].localizedObjectAnnotations[0].name;                    
 
                     return googleVisionRes.responses[0].localizedObjectAnnotations[0];
                 }
@@ -232,42 +175,6 @@ export default class CameraPage extends React.Component {
     };
 
 
-    drawBox(e, i){
-        let [left, top, right, bottom] = e.boundingBox;
-        // const {imageWidh, imageHeight, imgPixelWidth, imgPixelHeight} = this.state;
-
-        // calculating the absolute position of each box base on the pixel size of the 
-        // of the image and the on screen sizes (imageWidh, imageHeight) given by react native 
-        // (check the renderCameraOrImage funtion) 
-                           // <Text visible="false" value="heeey" className="Output" ref={this.myRef} />
-                
-
-        // left = (left / imgPixelWidth) * imageWidh;
-        // right = (right / imgPixelWidth) * imageWidh;
-        // top = (top / imgPixelHeight) * imageHeight;
-        // bottom = (bottom / imgPixelHeight) * imageHeight;
-
-        const boxWidth = Math.abs(left - right);
-        const boxHeight = Math.abs(top - bottom);
-
-        console.log('box', boxWidth, boxHeight);
-
-        return (
-          <TouchableOpacity
-            key={i}
-            style={{
-              position: 'absolute',
-              left,
-              top,
-              width: boxWidth,
-              height: boxHeight,
-              borderWidth: 1,
-              borderColor: Colors.green,
-              zIndex: 2000,
-            }}
-          />
-        );
-    };
 
     render() {
         const { hasCameraPermission, flashMode, cameraType, capturing, captures, googleVisionDetetion, result, loading} = this.state;
